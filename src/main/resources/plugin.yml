@@ -1,0 +1,8 @@
+name: JortooBot
+version: '${project.version}'
+main: me.jqrtox.jortoobot.JortooBot
+api-version: '1.21'
+commands:
+  staffchat:
+    aliases: ["sc"]
+    permission: jortoo.staff.chat
