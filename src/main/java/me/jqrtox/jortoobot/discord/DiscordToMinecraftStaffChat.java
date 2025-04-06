@@ -17,7 +17,9 @@ public class DiscordToMinecraftStaffChat extends ListenerAdapter {
         if (event.getMessage().getChannel() != JortooBot.staffChatChannel) {
             return;
         }
-
+        if (event.getAuthor().isBot()) {
+            return;
+        }
         String message = event.getMessage().getContentRaw();
         String user = event.getAuthor().getName();
 

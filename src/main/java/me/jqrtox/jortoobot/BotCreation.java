@@ -1,10 +1,7 @@
 package me.jqrtox.jortoobot;
 
-import me.jqrtox.jortoobot.commands.CheckOnline;
-import me.jqrtox.jortoobot.discord.Counting;
-import me.jqrtox.jortoobot.discord.DiscordJoin;
-import me.jqrtox.jortoobot.discord.DiscordToMinecraft;
-import me.jqrtox.jortoobot.discord.DiscordToMinecraftStaffChat;
+import me.jqrtox.jortoobot.commands.DiscordCommands;
+import me.jqrtox.jortoobot.discord.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -38,10 +35,11 @@ public class BotCreation {
             JDABuilder jdaBuilder = JDABuilder.createDefault(token).setStatus(OnlineStatus.DO_NOT_DISTURB)
                     .setActivity(Activity.watching("GenerikBox.minehut.gg"))
                     .addEventListeners(new DiscordToMinecraft())
-                    .addEventListeners(new CheckOnline())
+                    .addEventListeners(new DiscordCommands())
                     .addEventListeners(new DiscordToMinecraftStaffChat())
                     .addEventListeners(new Counting())
-                    .addEventListeners(new DiscordJoin());
+                    .addEventListeners(new DiscordJoin())
+                    .addEventListeners(new LinkChannelManager());
 
             for (GatewayIntent value : GatewayIntent.values())
                 jdaBuilder.enableIntents(value);
@@ -57,6 +55,11 @@ public class BotCreation {
             JortooBot.staffChatChannel = jda.getTextChannelById(config.getString("bot.staffchat-channel-id"));
             JortooBot.countChannel = jda.getTextChannelById(config.getString("bot.count-channel-id"));
             JortooBot.welcomeChannel = jda.getTextChannelById(config.getString("bot.welcome-channel-id"));
+            JortooBot.killLogChannel = jda.getTextChannelById(config.getString("bot.kill-log-channel-id"));
+            JortooBot.linkingLogChannel = jda.getTextChannelById(config.getString("bot.linking-log-channel-id"));
+            JortooBot.linkingChannel = jda.getTextChannelById(config.getString("bot.linking-channel-id"));
+            JortooBot.linkedRole = jda.getRoleById(config.getString("bot.linking-role-id"));
+            JortooBot.suggestionChannel = jda.getTextChannelById(config.getString("bot.suggestion-channel-id"));
 
             guildId = config.getString("bot.guild-id");
             guild = BotCreation.jda.getGuildById(guildId);

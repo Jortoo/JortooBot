@@ -6,3 +6,4 @@ commands:
   staffchat:
     aliases: ["sc"]
     permission: jortoo.staff.chat
+  link:

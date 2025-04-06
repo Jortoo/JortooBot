@@ -12,27 +12,32 @@ public class DiscordYml {
 
     public static final File countFile = new File(JortooBot.plugin.getDataFolder(), "DiscordBotStats.yml");
 
-    public static final FileConfiguration yml;
+    public static final FileConfiguration discordYml;
 
     public static long number = 0;
+    public static long suggestionCount = 0;
 
     static {
 
         try {
 
             countFile.createNewFile();
-            yml = YamlConfiguration.loadConfiguration(countFile);
+            discordYml = YamlConfiguration.loadConfiguration(countFile);
 
-            if (yml.isSet("count-number")) {
-                number = yml.getInt("count-number");
+            if (discordYml.isSet("count-number")) {
+                number = discordYml.getInt("count-number");
+            }
+            if (discordYml.isSet("suggestion-count")) {
+                suggestionCount = discordYml.getInt("suggestion-count");
             }
 
             Bukkit.getScheduler().runTaskTimerAsynchronously(JortooBot.plugin, () -> {
 
-                yml.set("count-number", number);
+                discordYml.set("count-number", number);
+                discordYml.set("suggestion-count", suggestionCount);
 
                 try {
-                    yml.save(countFile);
+                    discordYml.save(countFile);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

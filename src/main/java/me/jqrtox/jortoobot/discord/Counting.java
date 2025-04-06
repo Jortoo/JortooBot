@@ -19,22 +19,11 @@ public class Counting extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
 
-        if (event.getMessage().getChannel() != JortooBot.countChannel) {
+        if (event.getMessage().getChannel() != JortooBot.countChannel)
             return;
-        }
+
         if (event.getAuthor().isBot() || event.isWebhookMessage())
             return;
-
-        event.getChannel().getHistory().retrievePast(2).queue(messages -> {
-            if (messages.size() > 1) {
-                Message prevMessage = messages.get(1);
-                User prevUser = prevMessage.getAuthor();
-                if (prevUser.equals(event.getAuthor())) {
-                    event.getMessage().delete().queue();
-                }
-            }
-        });
-
 
         String message = event.getMessage().getContentRaw();
 

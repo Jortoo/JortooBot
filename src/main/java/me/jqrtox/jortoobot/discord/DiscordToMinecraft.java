@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -26,7 +27,7 @@ public class DiscordToMinecraft extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
         String user = event.getAuthor().getName();
         MiniMessage mm = MiniMessage.miniMessage();
-        Bukkit.broadcast(mm.deserialize("<blue><bold>DISCORD</bold> <white>" + user + ":<gray> " + message));
+        Bukkit.broadcast(mm.deserialize("<blue><bold>DISCORD</bold> <white>" + user + ":<gray> <message>", Placeholder.unparsed("message", message)));
 
     }
 
