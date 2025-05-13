@@ -31,10 +31,10 @@ public class DiscordCommands extends ListenerAdapter {
                 }
 
                 EmbedBuilder eb = new EmbedBuilder();
-                eb.setTitle("Total players online on Generik Box");
+                eb.setTitle("Total players online on Crazify Box");
                 eb.setColor(Color.decode(JortooBot.mainColor));
                 eb.addField("Online:", "Total online: (" + Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getServer().getMaxPlayers() + ")", true);
-                eb.setDescription("Join using GenerikBox.minehut.gg");
+                eb.setDescription("Join using Crazify.minehut.gg");
                 event.replyEmbeds(eb.build()).queue();
             }
             case "link" -> {

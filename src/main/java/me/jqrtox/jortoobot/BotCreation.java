@@ -33,7 +33,7 @@ public class BotCreation {
         try {
 
             JDABuilder jdaBuilder = JDABuilder.createDefault(token).setStatus(OnlineStatus.DO_NOT_DISTURB)
-                    .setActivity(Activity.watching("GenerikBox.minehut.gg"))
+                    .setActivity(Activity.watching("Crazify.minehut.gg"))
                     .addEventListeners(new DiscordToMinecraft())
                     .addEventListeners(new DiscordCommands())
                     .addEventListeners(new DiscordToMinecraftStaffChat())
@@ -59,7 +59,6 @@ public class BotCreation {
             JortooBot.linkingLogChannel = jda.getTextChannelById(config.getString("bot.linking-log-channel-id"));
             JortooBot.linkingChannel = jda.getTextChannelById(config.getString("bot.linking-channel-id"));
             JortooBot.linkedRole = jda.getRoleById(config.getString("bot.linking-role-id"));
-            JortooBot.suggestionChannel = jda.getTextChannelById(config.getString("bot.suggestion-channel-id"));
 
             guildId = config.getString("bot.guild-id");
             guild = BotCreation.jda.getGuildById(guildId);

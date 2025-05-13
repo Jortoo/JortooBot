@@ -28,8 +28,8 @@ public class DiscordJoin extends ListenerAdapter {
         String avatarUrl = event.getMember().getEffectiveAvatarUrl();
         eb.setColor(Color.decode(JortooBot.mainColor));
         eb.setAuthor("New member!");
-        eb.addField("Welcome to Generik Box" , event.getMember().getAsMention() + "\n", false);
-        eb.addField("Check out:", " - " + jda.getTextChannelById("1354977090641985647").getAsMention() + "\n - " + jda.getTextChannelById("1354977130831679639").getAsMention() + "\n - " + jda.getTextChannelById("1354977445303947496").getAsMention() + "\n - " + jda.getTextChannelById("1354978075397459979").getAsMention() + "\n\n Enjoy your stay! (IP: GenerikBox.minehut.gg)", false);
+        eb.addField("Welcome to Crazify Box" , event.getMember().getAsMention() + "\n", false);
+        eb.addField("Check out:", " - " + jda.getTextChannelById("1354977090641985647").getAsMention() + "\n - " + jda.getTextChannelById("1354977130831679639").getAsMention() + "\n - " + jda.getTextChannelById("1354977445303947496").getAsMention() + "\n - " + jda.getTextChannelById("1354978075397459979").getAsMention() + "\n\n Enjoy your stay! (IP: Crazify.minehut.gg)", false);
         eb.setThumbnail(avatarUrl);
         jda.getTextChannelById(welcomeChannelId).sendMessageEmbeds(eb.build()).queue();
 
